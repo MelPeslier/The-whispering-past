@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://jrp6mtv7m4nn"]
+[gd_scene load_steps=2 format=3 uid="uid://jrp6mtv7m4nn"]
 
-[node name="SpawnPoint" type="Marker2D" groups=["SpawnPoint"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_80jv5"]
+radius = 24.0
+
+[node name="SpawnPoint" type="Area2D" groups=["SpawnPoint"]]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_80jv5")

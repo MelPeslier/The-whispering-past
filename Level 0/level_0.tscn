@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://uf1phcdrklvl"]
+[gd_scene load_steps=25 format=3 uid="uid://b4um0l4oc7e3y"]
 
 [ext_resource type="Texture2D" uid="uid://m1opf4nl6sb3" path="res://Assets/Parallax Forest Background - Blue/04_Forest.png" id="1_pj1kw"]
 [ext_resource type="Texture2D" uid="uid://djjb215ed6ala" path="res://Assets/Parallax Forest Background - Blue/05_Particles.png" id="2_frwqo"]
@@ -9,21 +9,24 @@
 [ext_resource type="Script" path="res://Level 0/05ParticlesParallaxLayer.gd" id="6_sgy18"]
 [ext_resource type="Texture2D" uid="uid://uxak1723spry" path="res://Assets/Parallax Forest Background - Blue/10_Sky.png" id="7_t0yip"]
 [ext_resource type="PackedScene" uid="uid://cff2vdt0al33" path="res://Player/player.tscn" id="8_pums1"]
+[ext_resource type="Script" path="res://Level 0/Souvenirs.gd" id="9_8rgh8"]
 [ext_resource type="Script" path="res://Level 0/Camera.gd" id="9_asxnp"]
-[ext_resource type="Script" path="res://Level 0/World.gd" id="9_gbgik"]
+[ext_resource type="Script" path="res://Level 0/position_x_joueur.gd" id="9_qanxd"]
 [ext_resource type="Texture2D" uid="uid://ejt7x5yqqxnc" path="res://Assets/Parallax Forest Background - Blue/01_Mist.png" id="9_soxxm"]
 [ext_resource type="AudioStream" uid="uid://b1c22uyinxr76" path="res://Assets/Sons/ambiance.mp3" id="10_kx42o"]
 [ext_resource type="Texture2D" uid="uid://bak8dhk0gromd" path="res://Assets/Parallax Forest Background - Blue/02_Bushes.png" id="10_wsnv6"]
 [ext_resource type="Texture2D" uid="uid://c23qc6y1guqc7" path="res://Assets/Parallax Forest Background - Blue/03_Particles.png" id="11_1r5jk"]
+[ext_resource type="Script" path="res://Level 0/AireSupression.gd" id="11_h5dpj"]
 [ext_resource type="Script" path="res://Level 0/AireActivation.gd" id="12_hlpwy"]
 [ext_resource type="Script" path="res://Level 0/03ParticlesParallaxLayer.gd" id="12_mv5cp"]
 [ext_resource type="Script" path="res://Level 0/01MistParallaxLayer.gd" id="13_1djl3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkj3h"]
-size = Vector2(20, 162)
+[ext_resource type="PackedScene" uid="uid://jrp6mtv7m4nn" path="res://Echoes/SpawnPoint.tscn" id="14_oxcrv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvpyk"]
 size = Vector2(55576, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkj3h"]
+size = Vector2(20, 162)
 
 [sub_resource type="Environment" id="Environment_12jei"]
 background_mode = 3
@@ -120,7 +123,41 @@ texture = ExtResource("1_pj1kw")
 centered = false
 
 [node name="World" type="Node2D" parent="."]
-script = ExtResource("9_gbgik")
+
+[node name="Ground" type="Node2D" parent="World"]
+
+[node name="ground" type="StaticBody2D" parent="World/Ground" groups=["floor"]]
+position = Vector2(0, 648)
+collision_layer = 2
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="World/Ground/ground"]
+position = Vector2(27788, -40)
+shape = SubResource("RectangleShape2D_hvpyk")
+
+[node name="Marker2D" type="Marker2D" parent="World"]
+script = ExtResource("9_qanxd")
+
+[node name="AireActivation" type="Area2D" parent="World/Marker2D"]
+position = Vector2(1536, 320)
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("12_hlpwy")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Marker2D/AireActivation"]
+shape = SubResource("RectangleShape2D_kkj3h")
+
+[node name="AireSupression" type="Area2D" parent="World/Marker2D"]
+position = Vector2(-400, 320)
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("11_h5dpj")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Marker2D/AireSupression"]
+shape = SubResource("RectangleShape2D_kkj3h")
 
 [node name="Player" parent="World" instance=ExtResource("8_pums1")]
 position = Vector2(592, 552)
@@ -135,25 +172,105 @@ script = ExtResource("9_asxnp")
 stream = ExtResource("10_kx42o")
 volume_db = -7.0
 
-[node name="AireActivation" type="Area2D" parent="World/Player/Camera2D"]
-position = Vector2(270, -58)
-script = ExtResource("12_hlpwy")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player/Camera2D/AireActivation"]
-shape = SubResource("RectangleShape2D_kkj3h")
-
-[node name="Ground" type="Node2D" parent="World"]
-
-[node name="ground" type="StaticBody2D" parent="World/Ground" groups=["floor"]]
-position = Vector2(0, 648)
-collision_layer = 2
-
-[node name="GroundCollisionShape" type="CollisionShape2D" parent="World/Ground/ground"]
-position = Vector2(27788, -40)
-shape = SubResource("RectangleShape2D_hvpyk")
-
 [node name="Souvenirs" type="Node2D" parent="World"]
+visible = false
+script = ExtResource("9_8rgh8")
+
+[node name="SpawnPoint" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1088, 320)
+
+[node name="SpawnPoint2" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1136, 320)
+
+[node name="SpawnPoint3" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1184, 320)
+
+[node name="SpawnPoint4" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1232, 320)
+
+[node name="SpawnPoint5" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1280, 320)
+
+[node name="SpawnPoint6" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1328, 320)
+
+[node name="SpawnPoint7" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1376, 320)
+
+[node name="SpawnPoint8" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1424, 320)
+
+[node name="SpawnPoint9" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1472, 320)
+
+[node name="SpawnPoint10" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1520, 320)
+
+[node name="SpawnPoint11" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1568, 320)
+
+[node name="SpawnPoint12" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1616, 320)
+
+[node name="SpawnPoint13" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1664, 320)
+
+[node name="SpawnPoint14" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1712, 320)
+
+[node name="SpawnPoint15" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1760, 320)
+
+[node name="SpawnPoint16" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1808, 320)
+
+[node name="SpawnPoint17" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1088, 320)
+
+[node name="SpawnPoint18" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1136, 320)
+
+[node name="SpawnPoint19" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1184, 320)
+
+[node name="SpawnPoint20" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1232, 320)
+
+[node name="SpawnPoint21" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1280, 320)
+
+[node name="SpawnPoint22" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1328, 320)
+
+[node name="SpawnPoint23" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1376, 320)
+
+[node name="SpawnPoint24" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1424, 320)
+
+[node name="SpawnPoint25" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1472, 320)
+
+[node name="SpawnPoint26" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1520, 320)
+
+[node name="SpawnPoint27" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1568, 320)
+
+[node name="SpawnPoint28" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1616, 320)
+
+[node name="SpawnPoint29" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1664, 320)
+
+[node name="SpawnPoint30" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1712, 320)
+
+[node name="SpawnPoint31" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1760, 320)
+
+[node name="SpawnPoint32" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(1808, 320)
 
 [node name="ParallaxForGround" type="ParallaxBackground" parent="."]
 layer = 10
@@ -193,4 +310,5 @@ centered = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_12jei")
 
-[connection signal="body_entered" from="World/Player/Camera2D/AireActivation" to="World/Player/Camera2D/AireActivation" method="_on_body_entered"]
+[connection signal="area_entered" from="World/Marker2D/AireActivation" to="World/Marker2D/AireActivation" method="_on_area_entered"]
+[connection signal="area_entered" from="World/Marker2D/AireSupression" to="World/Marker2D/AireSupression" method="_on_area_entered"]

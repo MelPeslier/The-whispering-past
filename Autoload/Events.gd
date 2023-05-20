@@ -5,4 +5,4 @@ enum Type {
 	SUN,
 }
 
-signal spawn(type: Type)
+signal spawn(type: Type, _pos: Vector2)

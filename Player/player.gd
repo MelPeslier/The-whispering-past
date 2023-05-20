@@ -22,7 +22,7 @@ const STEP: float = 0.35
 @export var jump_buffer_time_max: float = 0.08
 @export var slide_buffer_time_max: float = 0.08
 
-var speed: float = 000
+var speed: float = 500
 var jump_buffer: float = 0.0
 var slide_buffer: float = 0.0
 var actual_slide_time: float = 0.0
@@ -37,7 +37,7 @@ enum respiration {
 	FORTE,
 }
 
-var respi_interval: float = 2.0
+var respi_interval: float = 30.0
 var respi: int = respiration.FAIBLE
 var respi_time: float = 0.0
 
@@ -108,13 +108,12 @@ func _physics_process(delta: float) -> void:
 					respi_time = 0.0
 					match respi:
 						respiration.FAIBLE:
-							respi_interval = 2.0
 							respire_faible.play()
 						respiration.NORMALE:
-							respi_interval = 1.25
+							respi_interval = 1.25 * respi_interval
 							respire_normale.play()
 						respiration.FORTE:
-							respi_interval = 1.23
+							respi_interval = 1.13 * respi_interval
 							respire_forte.play()
 		
 		if Input.is_action_just_pressed('jump') || jump_buffer < jump_buffer_time_max:

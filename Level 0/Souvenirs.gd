@@ -6,16 +6,17 @@ extends Node2D
 func _ready() -> void:
 	Events.connect("spawn", on_spawn)
 
-func on_spawn(type: Events.Type):
-	var pos: Vector2 = Vector2(randf_range(-30.0, 30.0), randf_range(-200.0, 200.0))
-	var obj: PackedScene
+func on_spawn(type: Events.Type, _pos: Vector2):
+	var item:PackedScene
 	
 	match type:
 		Events.Type.MOON:
-			obj = moon
+			item = moon
 		Events.Type.SUN:
-			obj = sun
-		
+			item = sun
+	
+	var obj = item.instantiate()
+	
+	var pos: Vector2 = Vector2(_pos.x + randf_range(-30.0, 30.0), _pos.y + randf_range(-150.0, 150.0))
 	obj.global_position = pos
-	obj.get_tree.instantiate()
-	get_tree()
+	call_deferred("add_child", obj)
