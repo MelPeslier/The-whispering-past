@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://emcnuobg7syy"]
+
+[ext_resource type="Script" path="res://Echoes/no_shadder_sun_light.gd" id="1_jdl2q"]
+[ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="2_4jcgy"]
+[ext_resource type="AudioStream" uid="uid://cfq2ne1cg52nb" path="res://Assets/Sons/Chant_souvenir_sombre.wav" id="3_p572g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bckf"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfhw5"]
+radius = 16.0
+
+[node name="Moon" type="Area2D" groups=["collectable"]]
+scale = Vector2(0.85, 0.85)
+script = ExtResource("1_jdl2q")
+
+[node name="SunSprite" type="Sprite2D" parent="."]
+modulate = Color(0.419608, 0.0313726, 0.792157, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4jcgy")
+
+[node name="SunSprite2" type="Sprite2D" parent="."]
+modulate = Color(0.14902, 0, 0.101961, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4jcgy")
+
+[node name="SunSprite3" type="Sprite2D" parent="."]
+modulate = Color(0.337255, 0.435294, 1, 1)
+material = SubResource("CanvasItemMaterial_7bckf")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4jcgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_gfhw5")
+
+[node name="Chant" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p572g")

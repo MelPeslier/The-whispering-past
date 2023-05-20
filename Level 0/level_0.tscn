@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://uf1phcdrklvl"]
+[gd_scene load_steps=22 format=3 uid="uid://uf1phcdrklvl"]
 
 [ext_resource type="Texture2D" uid="uid://m1opf4nl6sb3" path="res://Assets/Parallax Forest Background - Blue/04_Forest.png" id="1_pj1kw"]
 [ext_resource type="Texture2D" uid="uid://djjb215ed6ala" path="res://Assets/Parallax Forest Background - Blue/05_Particles.png" id="2_frwqo"]
@@ -10,15 +10,40 @@
 [ext_resource type="Texture2D" uid="uid://uxak1723spry" path="res://Assets/Parallax Forest Background - Blue/10_Sky.png" id="7_t0yip"]
 [ext_resource type="PackedScene" uid="uid://cff2vdt0al33" path="res://Player/player.tscn" id="8_pums1"]
 [ext_resource type="Script" path="res://Level 0/Camera.gd" id="9_asxnp"]
+[ext_resource type="Script" path="res://Level 0/World.gd" id="9_gbgik"]
 [ext_resource type="Texture2D" uid="uid://ejt7x5yqqxnc" path="res://Assets/Parallax Forest Background - Blue/01_Mist.png" id="9_soxxm"]
 [ext_resource type="AudioStream" uid="uid://b1c22uyinxr76" path="res://Assets/Sons/ambiance.mp3" id="10_kx42o"]
 [ext_resource type="Texture2D" uid="uid://bak8dhk0gromd" path="res://Assets/Parallax Forest Background - Blue/02_Bushes.png" id="10_wsnv6"]
 [ext_resource type="Texture2D" uid="uid://c23qc6y1guqc7" path="res://Assets/Parallax Forest Background - Blue/03_Particles.png" id="11_1r5jk"]
+[ext_resource type="Script" path="res://Level 0/AireActivation.gd" id="12_hlpwy"]
 [ext_resource type="Script" path="res://Level 0/03ParticlesParallaxLayer.gd" id="12_mv5cp"]
 [ext_resource type="Script" path="res://Level 0/01MistParallaxLayer.gd" id="13_1djl3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkj3h"]
+size = Vector2(20, 162)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvpyk"]
 size = Vector2(55576, 80)
+
+[sub_resource type="Environment" id="Environment_12jei"]
+background_mode = 3
+background_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_levels/2 = 1.0
+glow_levels/3 = 2.01
+glow_levels/4 = 7.67
+glow_levels/5 = 8.5
+glow_levels/6 = 6.67
+glow_levels/7 = 2.5
+glow_intensity = 1.94
+glow_strength = 1.29
+glow_blend_mode = 0
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.85
+fog_sun_scatter = 0.31
+fog_density = 0.9385
+fog_height = 417.19
+fog_height_density = 6.2222
 
 [node name="Level 0" type="Node2D"]
 
@@ -95,6 +120,7 @@ texture = ExtResource("1_pj1kw")
 centered = false
 
 [node name="World" type="Node2D" parent="."]
+script = ExtResource("9_gbgik")
 
 [node name="Player" parent="World" instance=ExtResource("8_pums1")]
 position = Vector2(592, 552)
@@ -109,6 +135,14 @@ script = ExtResource("9_asxnp")
 stream = ExtResource("10_kx42o")
 volume_db = -7.0
 
+[node name="AireActivation" type="Area2D" parent="World/Player/Camera2D"]
+position = Vector2(270, -58)
+script = ExtResource("12_hlpwy")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player/Camera2D/AireActivation"]
+shape = SubResource("RectangleShape2D_kkj3h")
+
 [node name="Ground" type="Node2D" parent="World"]
 
 [node name="ground" type="StaticBody2D" parent="World/Ground" groups=["floor"]]
@@ -119,8 +153,11 @@ collision_layer = 2
 position = Vector2(27788, -40)
 shape = SubResource("RectangleShape2D_hvpyk")
 
+[node name="Souvenirs" type="Node2D" parent="World"]
+
 [node name="ParallaxForGround" type="ParallaxBackground" parent="."]
 layer = 10
+visible = false
 
 [node name="03ParticlesParallaxLayer" type="ParallaxLayer" parent="ParallaxForGround"]
 modulate = Color(0.862745, 0.901961, 0.207843, 1)
@@ -152,3 +189,8 @@ script = ExtResource("13_1djl3")
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_soxxm")
 centered = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_12jei")
+
+[connection signal="body_entered" from="World/Player/Camera2D/AireActivation" to="World/Player/Camera2D/AireActivation" method="_on_body_entered"]

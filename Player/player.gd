@@ -22,7 +22,7 @@ const STEP: float = 0.35
 @export var jump_buffer_time_max: float = 0.08
 @export var slide_buffer_time_max: float = 0.08
 
-var speed: float = 600
+var speed: float = 000
 var jump_buffer: float = 0.0
 var slide_buffer: float = 0.0
 var actual_slide_time: float = 0.0
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					respi = respiration.NORMALE
 			
-			if velocity.x < 0:
+			if velocity.x == 0:
 				animated_sprite_2d.play("IDLE")
 			else: 
 				animated_sprite_2d.play("RUN")
