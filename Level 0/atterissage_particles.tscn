@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://rjsxjiys02us"]
+
+[ext_resource type="Texture2D" uid="uid://4d2hyjltxqxl" path="res://Assets/Pixel.png" id="1_aqc7a"]
+[ext_resource type="Script" path="res://Level 0/particles_spawn.gd" id="2_0ard6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rib3d"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 140.0
+initial_velocity_max = 160.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+
+[node name="AtterissageParticles" type="GPUParticles2D"]
+position = Vector2(7.25, 0.5)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_rib3d")
+texture = ExtResource("1_aqc7a")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.83
+script = ExtResource("2_0ard6")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

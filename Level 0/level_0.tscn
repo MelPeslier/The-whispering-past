@@ -1,0 +1,154 @@
+[gd_scene load_steps=18 format=3 uid="uid://uf1phcdrklvl"]
+
+[ext_resource type="Texture2D" uid="uid://m1opf4nl6sb3" path="res://Assets/Parallax Forest Background - Blue/04_Forest.png" id="1_pj1kw"]
+[ext_resource type="Texture2D" uid="uid://djjb215ed6ala" path="res://Assets/Parallax Forest Background - Blue/05_Particles.png" id="2_frwqo"]
+[ext_resource type="Texture2D" uid="uid://cfluwi48rkstl" path="res://Assets/Parallax Forest Background - Blue/06_Forest.png" id="3_hn50j"]
+[ext_resource type="Texture2D" uid="uid://dq4gcst0b2q64" path="res://Assets/Parallax Forest Background - Blue/07_Forest.png" id="4_mk1st"]
+[ext_resource type="Texture2D" uid="uid://c2fn2viq8eui2" path="res://Assets/Parallax Forest Background - Blue/08_Forest.png" id="5_q0any"]
+[ext_resource type="Texture2D" uid="uid://byvhgk0xj7u4a" path="res://Assets/Parallax Forest Background - Blue/09_Forest.png" id="6_0225b"]
+[ext_resource type="Script" path="res://Level 0/05ParticlesParallaxLayer.gd" id="6_sgy18"]
+[ext_resource type="Texture2D" uid="uid://uxak1723spry" path="res://Assets/Parallax Forest Background - Blue/10_Sky.png" id="7_t0yip"]
+[ext_resource type="PackedScene" uid="uid://cff2vdt0al33" path="res://Player/player.tscn" id="8_pums1"]
+[ext_resource type="Script" path="res://Level 0/Camera.gd" id="9_asxnp"]
+[ext_resource type="Texture2D" uid="uid://ejt7x5yqqxnc" path="res://Assets/Parallax Forest Background - Blue/01_Mist.png" id="9_soxxm"]
+[ext_resource type="AudioStream" uid="uid://b1c22uyinxr76" path="res://Assets/Sons/ambiance.mp3" id="10_kx42o"]
+[ext_resource type="Texture2D" uid="uid://bak8dhk0gromd" path="res://Assets/Parallax Forest Background - Blue/02_Bushes.png" id="10_wsnv6"]
+[ext_resource type="Texture2D" uid="uid://c23qc6y1guqc7" path="res://Assets/Parallax Forest Background - Blue/03_Particles.png" id="11_1r5jk"]
+[ext_resource type="Script" path="res://Level 0/03ParticlesParallaxLayer.gd" id="12_mv5cp"]
+[ext_resource type="Script" path="res://Level 0/01MistParallaxLayer.gd" id="13_1djl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvpyk"]
+size = Vector2(55576, 80)
+
+[node name="Level 0" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="10SkyParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.431373, 0.431373, 0.431373, 1)
+motion_scale = Vector2(0, 0)
+
+[node name="10Sky" type="Sprite2D" parent="ParallaxBackground/10SkyParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_t0yip")
+centered = false
+
+[node name="09ForestParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.192157, 0.192157, 0.192157, 1)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="09Forest" type="Sprite2D" parent="ParallaxBackground/09ForestParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_0225b")
+centered = false
+
+[node name="08ForestParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="08Forest" type="Sprite2D" parent="ParallaxBackground/08ForestParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_q0any")
+centered = false
+
+[node name="07ForestParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.282353, 0.282353, 0.282353, 1)
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="07Forest" type="Sprite2D" parent="ParallaxBackground/07ForestParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_mk1st")
+centered = false
+
+[node name="06ForestParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.333333, 0.333333, 0.333333, 1)
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="06Forest" type="Sprite2D" parent="ParallaxBackground/06ForestParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_hn50j")
+centered = false
+
+[node name="05ParticlesParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.854902, 0.666667, 0, 1)
+motion_scale = Vector2(0.7, 0)
+motion_mirroring = Vector2(1152, 0)
+script = ExtResource("6_sgy18")
+
+[node name="05Particles" type="Sprite2D" parent="ParallaxBackground/05ParticlesParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_frwqo")
+centered = false
+
+[node name="04ForestParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.552941, 0.552941, 0.552941, 1)
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="04Forest" type="Sprite2D" parent="ParallaxBackground/04ForestParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_pj1kw")
+centered = false
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Player" parent="World" instance=ExtResource("8_pums1")]
+position = Vector2(592, 552)
+
+[node name="Camera2D" type="Camera2D" parent="World/Player"]
+limit_left = 0
+limit_top = 0
+limit_bottom = 648
+script = ExtResource("9_asxnp")
+
+[node name="Ambiant" type="AudioStreamPlayer2D" parent="World/Player/Camera2D"]
+stream = ExtResource("10_kx42o")
+volume_db = -7.0
+
+[node name="Ground" type="Node2D" parent="World"]
+
+[node name="ground" type="StaticBody2D" parent="World/Ground" groups=["floor"]]
+position = Vector2(0, 648)
+collision_layer = 2
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="World/Ground/ground"]
+position = Vector2(27788, -40)
+shape = SubResource("RectangleShape2D_hvpyk")
+
+[node name="ParallaxForGround" type="ParallaxBackground" parent="."]
+layer = 10
+
+[node name="03ParticlesParallaxLayer" type="ParallaxLayer" parent="ParallaxForGround"]
+modulate = Color(0.862745, 0.901961, 0.207843, 1)
+motion_scale = Vector2(0.9, 0)
+motion_mirroring = Vector2(1152, 0)
+script = ExtResource("12_mv5cp")
+
+[node name="03Particles" type="Sprite2D" parent="ParallaxForGround/03ParticlesParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_1r5jk")
+centered = false
+
+[node name="02BushesParallaxLayer" type="ParallaxLayer" parent="ParallaxForGround"]
+modulate = Color(0.192157, 0.192157, 0.192157, 0.498039)
+motion_scale = Vector2(1.1, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="02Bushes" type="Sprite2D" parent="ParallaxForGround/02BushesParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_wsnv6")
+centered = false
+
+[node name="01MistParallaxLayer" type="ParallaxLayer" parent="ParallaxForGround"]
+motion_scale = Vector2(1.2, 0)
+motion_mirroring = Vector2(1152, 0)
+script = ExtResource("13_1djl3")
+
+[node name="01Mist" type="Sprite2D" parent="ParallaxForGround/01MistParallaxLayer"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_soxxm")
+centered = false
