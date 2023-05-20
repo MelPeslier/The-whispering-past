@@ -37,7 +37,7 @@ enum respiration {
 	FORTE,
 }
 
-var respi_interval: float = 30.0
+var respi_interval: float = 7.0
 var respi: int = respiration.FAIBLE
 var respi_time: float = 0.0
 
@@ -105,15 +105,14 @@ func _physics_process(delta: float) -> void:
 					spawn_particles(position , pas_particle)
 				
 				if respi_time > respi_interval:
-					respi_time = 0.0
 					match respi:
 						respiration.FAIBLE:
+							respi_interval += 20.0
 							respire_faible.play()
 						respiration.NORMALE:
-							respi_interval = 1.25 * respi_interval
+							respi_interval += 17.0
 							respire_normale.play()
 						respiration.FORTE:
-							respi_interval = 1.13 * respi_interval
 							respire_forte.play()
 		
 		if Input.is_action_just_pressed('jump') || jump_buffer < jump_buffer_time_max:
