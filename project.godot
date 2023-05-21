@@ -22,7 +22,6 @@ Events="*res://Autoload/Events.gd"
 [display]
 
 window/size/resizable=false
-window/size/borderless=true
 
 [input]
 

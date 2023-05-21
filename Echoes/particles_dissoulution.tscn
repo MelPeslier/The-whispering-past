@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddrr1fiquepee"]
+
+[ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="1_wi0dl"]
+
+[sub_resource type="Gradient" id="Gradient_t8vbc"]
+colors = PackedColorArray(1, 0.830495, 0.408407, 1, 1, 0, 0, 0.160784)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xyr54"]
+gradient = SubResource("Gradient_t8vbc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6j8fp"]
+lifetime_randomness = 0.33
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 205.88
+initial_velocity_max = 539.22
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.01
+scale_max = 0.02
+color_ramp = SubResource("GradientTexture1D_xyr54")
+
+[node name="ParticlesDissoulution" type="GPUParticles2D"]
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_6j8fp")
+texture = ExtResource("1_wi0dl")
+lifetime = 1.3
+one_shot = true
+explosiveness = 0.87

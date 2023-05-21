@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var area_detection_shape: CollisionShape2D = $PlayerDetectionArea/AreaDetectionShape
 @onready var pas: AudioStreamPlayer2D = $Pas
 @onready var atteri: AudioStreamPlayer2D = $Atteri
 @onready var respire_faible: AudioStreamPlayer2D = $RespireFaible
@@ -37,7 +38,7 @@ enum respiration {
 	FORTE,
 }
 
-var respi_interval: float = 7.0
+var respi_interval: float = 2.0
 var respi: int = respiration.FAIBLE
 var respi_time: float = 0.0
 
@@ -86,6 +87,8 @@ func _physics_process(delta: float) -> void:
 				is_sliding = false
 				collision_shape_2d.position.y = -15
 				collision_shape_2d.scale.y = 1.0
+				area_detection_shape.position.y = -15
+				area_detection_shape.scale.y = 1.0
 		
 		if not is_sliding:
 			if running_time > running_time_interval:
@@ -103,16 +106,18 @@ func _physics_process(delta: float) -> void:
 					step = 0.0
 					pas.play()
 					spawn_particles(position , pas_particle)
-				
+					
 				if respi_time > respi_interval:
+					respi_time = 0.0
 					match respi:
 						respiration.FAIBLE:
-							respi_interval += 20.0
+							respi_interval = 2.0
 							respire_faible.play()
 						respiration.NORMALE:
-							respi_interval += 17.0
+							respi_interval = 1.25
 							respire_normale.play()
 						respiration.FORTE:
+							respi_interval = 1.23
 							respire_forte.play()
 		
 		if Input.is_action_just_pressed('jump') || jump_buffer < jump_buffer_time_max:
@@ -126,6 +131,8 @@ func _physics_process(delta: float) -> void:
 			step = 0.0 
 			collision_shape_2d.position.y = -15
 			collision_shape_2d.scale.y = 1.0
+			area_detection_shape.position.y = -15
+			area_detection_shape.scale.y = 1.0
 		
 		elif Input.is_action_just_pressed("slide") || slide_buffer < slide_buffer_time_max:
 			animated_sprite_2d.play("SLIDE")
@@ -134,6 +141,8 @@ func _physics_process(delta: float) -> void:
 			actual_slide_time = 0.0 
 			collision_shape_2d.position.y = -7.5
 			collision_shape_2d.scale.y = 0.5
+			area_detection_shape.position.y = -7.5
+			area_detection_shape.scale.y = 0.5
 	
 	move_and_slide()
 

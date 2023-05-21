@@ -1,21 +1,40 @@
 extends Node2D
 
-@onready var moon: PackedScene = preload("res://Echoes/moon.tscn")
-@onready var sun: PackedScene = preload("res://Echoes/sun.tscn")
+@onready var moon_bar: PackedScene = preload("res://UI/moon_bar.tscn")
+@onready var sun_bar: PackedScene = preload("res://UI/sun_bar.tscn")
+
+var total: int = 0
+var pos: int = 5
+var neg: int = 7
 
 func _ready() -> void:
-	Events.connect("spawn", on_spawn)
+	Events.connect("add_point", _on_add_point)
 
-func on_spawn(type: Events.Type):
-	var pos: Vector2 = Vector2(randf_range(-30.0, 30.0), randf_range(-200.0, 200.0))
-	var obj: PackedScene
-	
+func _on_add_point(type: Events.Type):
 	match type:
 		Events.Type.MOON:
-			obj = moon
+			if total <= 0:
+				total -= pos
+			else:
+				total -= neg
+			
 		Events.Type.SUN:
-			obj = sun
-		
-	obj.global_position = pos
-	obj.get_tree.instantiate()
-	get_tree()
+			if total >= 0:
+				total += pos
+			else:
+				total += neg
+	
+	if total < -100:
+		total = -100
+	elif total > 100:
+		total = 100
+	
+	if total > 0:
+		Events.emit_signal("add_sun", total)
+		Events.emit_signal("add_moon", 0)
+	elif total < 0:
+		Events.emit_signal("add_moon", abs(total))
+		Events.emit_signal("add_sun", 0)
+	else:
+		Events.emit_signal("add_moon", 0)
+		Events.emit_signal("add_moon", 0)

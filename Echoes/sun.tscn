@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqr51nf61x4gx"]
+[gd_scene load_steps=11 format=3 uid="uid://cqr51nf61x4gx"]
 
 [ext_resource type="Script" path="res://Echoes/no_shadder_sun_light.gd" id="1_15a61"]
 [ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="2_ypkds"]
 [ext_resource type="AudioStream" uid="uid://bosvv0x73ar20" path="res://Assets/Sons/Chant_souvenir_lumiere.wav" id="3_q5kha"]
+[ext_resource type="PackedScene" uid="uid://ddrr1fiquepee" path="res://Echoes/particles_dissoulution.tscn" id="4_bgtj2"]
+[ext_resource type="AudioStream" uid="uid://bcg5xeljiljn" path="res://Assets/Sons/Voix_haha_sun.wav" id="5_2hqux"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bckf"]
 blend_mode = 1
@@ -10,8 +12,28 @@ blend_mode = 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfhw5"]
 radius = 16.0
 
+[sub_resource type="Gradient" id="Gradient_rtgb4"]
+colors = PackedColorArray(1, 0.830495, 0.408407, 1, 1, 0, 0, 0.160784)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lp2mt"]
+gradient = SubResource("Gradient_rtgb4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ynn0n"]
+lifetime_randomness = 0.33
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 45.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.02
+scale_max = 0.04
+color_ramp = SubResource("GradientTexture1D_lp2mt")
+
 [node name="Sun" type="Area2D" groups=["collectable"]]
-scale = Vector2(0.85, 0.85)
+collision_layer = 4
 script = ExtResource("1_15a61")
 
 [node name="SunSprite" type="Sprite2D" parent="."]
@@ -38,3 +60,11 @@ shape = SubResource("CircleShape2D_gfhw5")
 
 [node name="Chant" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_q5kha")
+
+[node name="ParticlesDissoulution" parent="." instance=ExtResource("4_bgtj2")]
+process_material = SubResource("ParticleProcessMaterial_ynn0n")
+
+[node name="Dissolution" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2hqux")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

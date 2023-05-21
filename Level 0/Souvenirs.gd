@@ -19,4 +19,7 @@ func on_spawn(type: Events.Type, _pos: Vector2):
 	
 	var pos: Vector2 = Vector2(_pos.x + randf_range(-30.0, 30.0), _pos.y + randf_range(-150.0, 150.0))
 	obj.global_position = pos
+	
+	obj.type = type
+	
 	call_deferred("add_child", obj)

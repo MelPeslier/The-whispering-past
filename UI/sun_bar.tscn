@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b570rl76w1ep8"]
+
+[ext_resource type="Texture2D" uid="uid://h3rn27vcgw7g" path="res://Assets/UI/l0_sprite_1.png" id="1_ervg3"]
+[ext_resource type="Texture2D" uid="uid://cxickoqnd7fue" path="res://Assets/UI/l1_sprite_1.png" id="2_gyiat"]
+[ext_resource type="Script" path="res://UI/sun_bar.gd" id="3_g0q6s"]
+
+[node name="SunBar" type="TextureProgressBar"]
+offset_left = 128.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 64.0
+rotation = 3.14159
+fill_mode = 1
+texture_under = ExtResource("1_ervg3")
+texture_progress = ExtResource("2_gyiat")
+script = ExtResource("3_g0q6s")

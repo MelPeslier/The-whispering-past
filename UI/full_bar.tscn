@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba0o47l1cl0jv"]
+
+[ext_resource type="PackedScene" uid="uid://du10txcqtgeo3" path="res://UI/moon_bar.tscn" id="1_wkdkc"]
+[ext_resource type="PackedScene" uid="uid://b570rl76w1ep8" path="res://UI/sun_bar.tscn" id="2_dgy5c"]
+[ext_resource type="Texture2D" uid="uid://b7065di0jjb7u" path="res://Assets/UI/Diamant.png" id="3_u5vwf"]
+
+[node name="FullBar" type="Control"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -896.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoonBar" parent="." instance=ExtResource("1_wkdkc")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 56.0
+
+[node name="SunBar" parent="." instance=ExtResource("2_dgy5c")]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 56.0
+offset_right = 384.0
+offset_bottom = 88.0
+
+[node name="Diamant" type="Sprite2D" parent="."]
+position = Vector2(128, 40)
+scale = Vector2(0.666665, 1.25)
+texture = ExtResource("3_u5vwf")

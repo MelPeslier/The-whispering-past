@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cff2vdt0al33"]
+[gd_scene load_steps=28 format=3 uid="uid://cff2vdt0al33"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0xk6x"]
 [ext_resource type="Texture2D" uid="uid://dmgydsimwx8yw" path="res://Assets/Character/fall/adventurer-fall-00.png" id="2_6rhpc"]
@@ -110,6 +110,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxupf"]
 radius = 8.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4at3a"]
+radius = 8.0
+
 [node name="Player" type="CharacterBody2D"]
 modulate = Color(0.611765, 0.611765, 0.611765, 1)
 scale = Vector2(4, 4)
@@ -140,17 +143,23 @@ attenuation = 13.9288
 
 [node name="RespireFaible" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4e8a0")
-volume_db = -10.0
+volume_db = -23.808
 pitch_scale = 0.8
 
 [node name="RespireNormale" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4e8a0")
-volume_db = -7.5
+volume_db = -17.288
 
 [node name="RespireForte" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_e68rq")
-volume_db = -5.0
+volume_db = -19.051
 
 [node name="Slide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_gojdl")
 volume_db = -7.5
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+
+[node name="AreaDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_4at3a")

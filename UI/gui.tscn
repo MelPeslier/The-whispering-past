@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfwrw8e4dppc6"]
+
+[ext_resource type="PackedScene" uid="uid://ba0o47l1cl0jv" path="res://UI/full_bar.tscn" id="1_pdptb"]
+
+[node name="GUI" type="MarginContainer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_top = 22
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="FullBar" parent="VBoxContainer" instance=ExtResource("1_pdptb")]
+layout_mode = 2

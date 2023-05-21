@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://du10txcqtgeo3"]
+
+[ext_resource type="Shader" path="res://UI/moon_bar.gdshader" id="1_to20u"]
+[ext_resource type="Texture2D" uid="uid://h3rn27vcgw7g" path="res://Assets/UI/l0_sprite_1.png" id="1_votdx"]
+[ext_resource type="Texture2D" uid="uid://cxickoqnd7fue" path="res://Assets/UI/l1_sprite_1.png" id="2_ro8u6"]
+[ext_resource type="Script" path="res://UI/moon_bar.gd" id="3_kfa86"]
+[ext_resource type="Texture2D" uid="uid://clapa6y1p25il" path="res://Echoes/moon_ramp.tres" id="4_0kx15"]
+[ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="4_ae6rg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epfu5"]
+shader = ExtResource("1_to20u")
+shader_parameter/val = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syfnr"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(60, 10, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 36.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 25.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.01
+scale_max = 0.02
+color_initial_ramp = ExtResource("4_0kx15")
+
+[node name="MoonBar" type="TextureProgressBar"]
+material = SubResource("ShaderMaterial_epfu5")
+offset_left = -128.0
+offset_bottom = 32.0
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("1_votdx")
+texture_progress = ExtResource("2_ro8u6")
+script = ExtResource("3_kfa86")
+
+[node name="MoonParticles" type="GPUParticles2D" parent="."]
+position = Vector2(72, 16)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_syfnr")
+texture = ExtResource("4_ae6rg")
+lifetime = 2.0
+visibility_rect = Rect2(50, -10, -110, 20)
