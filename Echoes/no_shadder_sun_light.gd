@@ -32,7 +32,7 @@ func _on_area_entered(_area: Area2D) -> void:
 	dissolution.play()
 	collision_shape_2d.set_deferred("disabled", true)
 	
-	Events.emit_signal("add_point", type)
+	Events.emit_signal("add_point", type,)
 	
 	particles_dissoulution.emitting = true
 	

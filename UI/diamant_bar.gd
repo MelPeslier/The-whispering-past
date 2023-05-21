@@ -33,3 +33,4 @@ func _on_add_to_bar(type: Events.Type, val: float) -> void:
 #	moon_particles.process_material.set("emission_box_extents", Vector3(val * U, 10.0, 1.0))
 #	moon_particles.set("position", Vector2(128.0 - val * U, 16.0))
 #	moon_particles.set("amount", clamp(val, 1, 100))
+

@@ -1,0 +1,26 @@
+[gd_resource type="Shader" format=3 uid="uid://dbnds2fx74hd8"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D moon_gradient;
+uniform sampler2D sun_gradient;
+uniform int type = 0;
+uniform float val;
+
+void fragment() {
+	vec4 pixel_color = texture(TEXTURE, UV);
+	vec4 gradient_color;
+	
+	switch (type){
+		case 0:
+			gradient_color = texture(moon_gradient, UV);
+			break;
+		case 1:
+			gradient_color = texture(sun_gradient, UV);
+			break;
+	}
+	gradient_color *= pixel_color.a;
+	COLOR = mix(pixel_color, gradient_color, clamp(val * 0.01,0.5, 1.0));
+}
+"

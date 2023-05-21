@@ -12,13 +12,13 @@ blend_mode = 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfhw5"]
 radius = 16.0
 
-[sub_resource type="Gradient" id="Gradient_rtgb4"]
+[sub_resource type="Gradient" id="Gradient_1ed4e"]
 colors = PackedColorArray(1, 0.830495, 0.408407, 1, 1, 0, 0, 0.160784)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_lp2mt"]
-gradient = SubResource("Gradient_rtgb4")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b2l57"]
+gradient = SubResource("Gradient_1ed4e")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ynn0n"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s10wi"]
 lifetime_randomness = 0.33
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
@@ -29,8 +29,8 @@ initial_velocity_max = 45.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.02
-scale_max = 0.04
-color_ramp = SubResource("GradientTexture1D_lp2mt")
+scale_max = 0.03
+color_ramp = SubResource("GradientTexture1D_b2l57")
 
 [node name="Sun" type="Area2D" groups=["collectable"]]
 collision_layer = 4
@@ -62,7 +62,7 @@ shape = SubResource("CircleShape2D_gfhw5")
 stream = ExtResource("3_q5kha")
 
 [node name="ParticlesDissoulution" parent="." instance=ExtResource("4_bgtj2")]
-process_material = SubResource("ParticleProcessMaterial_ynn0n")
+process_material = SubResource("ParticleProcessMaterial_s10wi")
 lifetime = 1.5
 
 [node name="Dissolution" type="AudioStreamPlayer2D" parent="."]
