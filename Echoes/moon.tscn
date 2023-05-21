@@ -1,17 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://emcnuobg7syy"]
+[gd_scene load_steps=11 format=3 uid="uid://emcnuobg7syy"]
 
 [ext_resource type="Script" path="res://Echoes/no_shadder_sun_light.gd" id="1_jdl2q"]
 [ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="2_4jcgy"]
 [ext_resource type="AudioStream" uid="uid://cfq2ne1cg52nb" path="res://Assets/Sons/Chant_souvenir_sombre.wav" id="3_p572g"]
 [ext_resource type="PackedScene" uid="uid://ddrr1fiquepee" path="res://Echoes/particles_dissoulution.tscn" id="4_ofbng"]
 [ext_resource type="AudioStream" uid="uid://c7oic60mgkded" path="res://Assets/Sons/Voix_haha_moon.wav" id="5_rbub6"]
-[ext_resource type="Texture2D" uid="uid://clapa6y1p25il" path="res://Echoes/moon_ramp.tres" id="5_yye71"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bckf"]
 blend_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfhw5"]
 radius = 16.0
+
+[sub_resource type="Gradient" id="Gradient_ixatl"]
+colors = PackedColorArray(0.419608, 0.0313726, 0.792157, 1, 0.419608, 0.0313726, 0.792157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bqdvk"]
+gradient = SubResource("Gradient_ixatl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ha11"]
 lifetime_randomness = 0.33
@@ -25,7 +30,7 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.02
 scale_max = 0.03
-color_ramp = ExtResource("5_yye71")
+color_ramp = SubResource("GradientTexture1D_bqdvk")
 
 [node name="Moon" type="Area2D" groups=["collectable"]]
 collision_layer = 4
@@ -58,8 +63,10 @@ stream = ExtResource("3_p572g")
 volume_db = -3.5
 
 [node name="ParticlesDissoulution" parent="." instance=ExtResource("4_ofbng")]
+emitting = true
 process_material = SubResource("ParticleProcessMaterial_2ha11")
 lifetime = 1.5
+one_shot = false
 
 [node name="Dissolution" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_rbub6")

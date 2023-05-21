@@ -1,20 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://du10txcqtgeo3"]
+[gd_scene load_steps=12 format=3 uid="uid://du10txcqtgeo3"]
 
 [ext_resource type="Shader" path="res://UI/moon_bar.gdshader" id="1_to20u"]
 [ext_resource type="Texture2D" uid="uid://h3rn27vcgw7g" path="res://Assets/UI/l0_sprite_1.png" id="1_votdx"]
 [ext_resource type="Texture2D" uid="uid://cxickoqnd7fue" path="res://Assets/UI/l1_sprite_1.png" id="2_ro8u6"]
 [ext_resource type="Script" path="res://UI/moon_bar.gd" id="3_kfa86"]
-[ext_resource type="Texture2D" uid="uid://clapa6y1p25il" path="res://Echoes/moon_ramp.tres" id="4_0kx15"]
 [ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="4_ae6rg"]
+
+[sub_resource type="Gradient" id="Gradient_btcxe"]
+colors = PackedColorArray(0.419608, 0.0313726, 0.792157, 1, 0.219608, 0, 0.207843, 0.235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfka6"]
+gradient = SubResource("Gradient_btcxe")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_epfu5"]
 shader = ExtResource("1_to20u")
-shader_parameter/val = 0.0
+shader_parameter/val = 100.0
+shader_parameter/gradient = SubResource("GradientTexture1D_nfka6")
+
+[sub_resource type="Gradient" id="Gradient_farga"]
+colors = PackedColorArray(0.419608, 0.0313726, 0.792157, 1, 0.219608, 0, 0.207843, 0.235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x4d16"]
+gradient = SubResource("Gradient_farga")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syfnr"]
 lifetime_randomness = 0.3
 emission_shape = 3
-emission_box_extents = Vector3(60, 10, 1)
+emission_box_extents = Vector3(0, 10, 1)
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 36.0
@@ -25,7 +37,7 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.01
 scale_max = 0.02
-color_initial_ramp = ExtResource("4_0kx15")
+color_initial_ramp = SubResource("GradientTexture1D_x4d16")
 
 [node name="MoonBar" type="TextureProgressBar"]
 material = SubResource("ShaderMaterial_epfu5")
@@ -38,9 +50,8 @@ texture_progress = ExtResource("2_ro8u6")
 script = ExtResource("3_kfa86")
 
 [node name="MoonParticles" type="GPUParticles2D" parent="."]
-position = Vector2(72, 16)
-amount = 32
+position = Vector2(128, 16)
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_syfnr")
 texture = ExtResource("4_ae6rg")
 lifetime = 2.0
-visibility_rect = Rect2(50, -10, -110, 20)
