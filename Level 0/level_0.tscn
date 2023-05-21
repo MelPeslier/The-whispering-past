@@ -204,113 +204,149 @@ volume_db = -7.0
 [node name="Souvenirs" type="Node2D" parent="World"]
 script = ExtResource("9_8rgh8")
 
-[node name="SpawnPoint" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(4448, 320)
-
-[node name="SpawnPoint28" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(1632, 320)
-
-[node name="SpawnPoint29" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(1696, 320)
-
-[node name="SpawnPoint30" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(1800, 320)
-
-[node name="SpawnPoint31" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(1952, 320)
-
 [node name="SpawnPoint32" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(2080, 320)
-
-[node name="SpawnPoint33" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(2240, 320)
-
-[node name="SpawnPoint34" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(2344, 320)
-
-[node name="SpawnPoint35" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(2408, 320)
-
-[node name="SpawnPoint36" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(2408, 320)
+position = Vector2(4768, 380)
 
 [node name="SpawnPoint2" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(7648, 320)
+position = Vector2(7304, 380)
 
 [node name="SpawnPoint3" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(10304, 320)
+position = Vector2(8968, 380)
 
 [node name="SpawnPoint4" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(10680, 320)
+position = Vector2(10072, 380)
 
 [node name="SpawnPoint5" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(10608, 320)
+position = Vector2(10000, 380)
 
 [node name="SpawnPoint6" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(13808, 320)
+position = Vector2(11728, 380)
 
 [node name="SpawnPoint7" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(14040, 320)
+position = Vector2(11960, 380)
 
 [node name="SpawnPoint8" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(13752, 320)
+position = Vector2(11672, 380)
 
 [node name="SpawnPoint9" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(16976, 320)
+position = Vector2(12544, 380)
 
 [node name="SpawnPoint10" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(17088, 320)
+position = Vector2(12656, 380)
 
 [node name="SpawnPoint11" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(27152, 320)
+position = Vector2(25992, 380)
 
 [node name="SpawnPoint12" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(27072, 320)
+position = Vector2(25912, 380)
 
 [node name="SpawnPoint13" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(23064, 320)
+position = Vector2(23240, 380)
 
 [node name="SpawnPoint14" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(27080, 320)
+position = Vector2(25920, 380)
 
 [node name="SpawnPoint21" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(27128, 320)
+position = Vector2(25968, 380)
 
 [node name="SpawnPoint22" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(27128, 320)
+position = Vector2(25968, 380)
 
 [node name="SpawnPoint15" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(22976, 320)
+position = Vector2(23152, 380)
 
 [node name="SpawnPoint16" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(23008, 320)
+position = Vector2(23184, 380)
 
 [node name="SpawnPoint17" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(23000, 320)
+position = Vector2(23176, 380)
 
 [node name="SpawnPoint18" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(23392, 320)
+position = Vector2(23568, 380)
 
 [node name="SpawnPoint19" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(23624, 320)
+position = Vector2(23800, 380)
 
 [node name="SpawnPoint20" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(20096, 320)
+position = Vector2(20096, 380)
 
 [node name="SpawnPoint23" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(30120, 320)
+position = Vector2(27456, 380)
 
 [node name="SpawnPoint24" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(20144, 320)
+position = Vector2(20144, 380)
+
+[node name="SpawnPoint28" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15192, 380)
+
+[node name="SpawnPoint29" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15240, 380)
+
+[node name="SpawnPoint30" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15488, 380)
+
+[node name="SpawnPoint31" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15536, 380)
+
+[node name="SpawnPoint33" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15728, 380)
+
+[node name="SpawnPoint34" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15776, 380)
+
+[node name="SpawnPoint35" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(15984, 380)
+
+[node name="SpawnPoint36" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(16032, 380)
+
+[node name="SpawnPoint37" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(16304, 380)
+
+[node name="SpawnPoint38" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(16352, 380)
+
+[node name="SpawnPoint39" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(16136, 380)
+
+[node name="SpawnPoint40" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(16184, 380)
+
+[node name="SpawnPoint41" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(20168, 380)
+
+[node name="SpawnPoint42" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(20080, 380)
 
 [node name="SpawnPoint25" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(30160, 320)
+position = Vector2(27496, 380)
 
 [node name="SpawnPoint26" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(30176, 320)
+position = Vector2(27512, 380)
 
 [node name="SpawnPoint27" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(30280, 320)
+position = Vector2(27616, 380)
+
+[node name="SpawnPoint43" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(29152, 380)
+
+[node name="SpawnPoint44" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(29776, 380)
+
+[node name="SpawnPoint45" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(30016, 380)
+
+[node name="SpawnPoint46" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(30888, 380)
+
+[node name="SpawnPoint47" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(31712, 380)
+
+[node name="SpawnPoint48" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(31912, 380)
+
+[node name="SpawnPoint49" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(33064, 380)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_12jei")

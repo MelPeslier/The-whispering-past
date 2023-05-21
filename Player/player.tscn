@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cff2vdt0al33"]
+[gd_scene load_steps=34 format=3 uid="uid://cff2vdt0al33"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0xk6x"]
 [ext_resource type="Texture2D" uid="uid://dmgydsimwx8yw" path="res://Assets/Character/fall/adventurer-fall-00.png" id="2_6rhpc"]
@@ -21,9 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://bmqnn6q00qk82" path="res://Assets/Character/slide/adventurer-slide-01.png" id="19_b0u4j"]
 [ext_resource type="AudioStream" uid="uid://dc7lumy4jkr3r" path="res://Assets/Sons/Pas.wav" id="20_giq6q"]
 [ext_resource type="AudioStream" uid="uid://dd135bu6i3vcg" path="res://Assets/Sons/Footsteps.wav" id="20_gl715"]
+[ext_resource type="Texture2D" uid="uid://cxvneeul75qtv" path="res://Assets/Character/walk/adventurer-walk-00.png" id="20_iymb5"]
+[ext_resource type="Texture2D" uid="uid://qtki4p3o42w5" path="res://Assets/Character/walk/adventurer-walk-01.png" id="21_wdabi"]
 [ext_resource type="AudioStream" uid="uid://dpav3d6al652l" path="res://Assets/Sons/essoufle.wav" id="22_4e8a0"]
+[ext_resource type="Texture2D" uid="uid://b5bt1dtv3oj2q" path="res://Assets/Character/walk/adventurer-walk-02.png" id="22_d4jjn"]
 [ext_resource type="AudioStream" uid="uid://d2wafkecofowr" path="res://Assets/Sons/essoufle_2.wav" id="23_e68rq"]
+[ext_resource type="Texture2D" uid="uid://cpdjor4xqj2jb" path="res://Assets/Character/walk/adventurer-walk-03.png" id="23_vuhs3"]
 [ext_resource type="AudioStream" uid="uid://bg8nbxjs1txk6" path="res://Assets/Sons/Slide.wav" id="24_gojdl"]
+[ext_resource type="Texture2D" uid="uid://batx37lqr6ht5" path="res://Assets/Character/walk/adventurer-walk-04.png" id="24_q676n"]
+[ext_resource type="Texture2D" uid="uid://bdsoar2coil2h" path="res://Assets/Character/walk/adventurer-walk-05.png" id="25_ixslh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cepw3"]
 animations = [{
@@ -105,6 +111,29 @@ animations = [{
 "loop": true,
 "name": &"SLIDE",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_iymb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wdabi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d4jjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vuhs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_q676n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ixslh")
+}],
+"loop": true,
+"name": &"WALK",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxupf"]
@@ -118,12 +147,14 @@ modulate = Color(0.611765, 0.611765, 0.611765, 1)
 scale = Vector2(4, 4)
 collision_mask = 6
 script = ExtResource("1_0xk6x")
+slide_time = null
+jump_buffer_time_max = null
+slide_buffer_time_max = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_cepw3")
-animation = &"RUN"
-frame_progress = 0.592218
+animation = &"WALK"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -143,22 +174,23 @@ attenuation = 13.9288
 
 [node name="RespireFaible" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4e8a0")
-volume_db = -23.808
+volume_db = -10.0
 pitch_scale = 0.8
 
 [node name="RespireNormale" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4e8a0")
-volume_db = -17.288
+volume_db = -7.0
 
 [node name="RespireForte" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_e68rq")
-volume_db = -19.051
+volume_db = -5.0
 
 [node name="Slide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_gojdl")
 volume_db = -7.5
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="AreaDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
 position = Vector2(0, -15)

@@ -99,6 +99,9 @@ func _physics_process(delta: float) -> void:
 			
 			if velocity.x == 0:
 				animated_sprite_2d.play("IDLE")
+			elif velocity.x < 350:
+				animated_sprite_2d.play("WALK")
+				eaerae
 			else: 
 				animated_sprite_2d.play("RUN")
 				step += delta

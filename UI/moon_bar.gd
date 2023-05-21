@@ -19,6 +19,7 @@ func _on_add_to_bar(type: Events.Type, val: float) -> void:
 			if not particles.emitting:
 				particles.emitting = true
 			particles.set("amount", val as int)
+			Events.emit_signal("add_diam", type, val)
 		else:
 			particles.emitting = false
 		

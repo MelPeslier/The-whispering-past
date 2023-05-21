@@ -15,13 +15,6 @@ offset_bottom = -568.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DiamantBar" parent="." instance=ExtResource("4_ervhg")]
-layout_mode = 0
-offset_left = 112.0
-offset_top = 8.0
-offset_right = 160.0
-offset_bottom = 72.0
-
 [node name="MoonBar" parent="." instance=ExtResource("1_wkdkc")]
 layout_mode = 0
 offset_left = 0.0
@@ -35,3 +28,10 @@ offset_left = 256.0
 offset_top = 56.0
 offset_right = 384.0
 offset_bottom = 88.0
+
+[node name="DiamantBar" parent="." instance=ExtResource("4_ervhg")]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 0.0
+offset_right = 160.0
+offset_bottom = 64.0

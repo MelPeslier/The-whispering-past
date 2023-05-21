@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="2_4jcgy"]
 [ext_resource type="AudioStream" uid="uid://cfq2ne1cg52nb" path="res://Assets/Sons/Chant_souvenir_sombre.wav" id="3_p572g"]
 [ext_resource type="PackedScene" uid="uid://ddrr1fiquepee" path="res://Echoes/particles_dissoulution.tscn" id="4_ofbng"]
-[ext_resource type="AudioStream" uid="uid://c7oic60mgkded" path="res://Assets/Sons/Voix_haha_moon.wav" id="5_rbub6"]
+[ext_resource type="AudioStream" uid="uid://dgjkqf41xh3ww" path="res://Assets/Sons/chant_triste.wav" id="5_dftjw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bckf"]
 blend_mode = 1
@@ -67,6 +67,6 @@ process_material = SubResource("ParticleProcessMaterial_h38ql")
 lifetime = 1.5
 
 [node name="Dissolution" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_rbub6")
+stream = ExtResource("5_dftjw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
