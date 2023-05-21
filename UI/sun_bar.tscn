@@ -1,16 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://b570rl76w1ep8"]
+[gd_scene load_steps=12 format=3 uid="uid://b570rl76w1ep8"]
 
 [ext_resource type="Texture2D" uid="uid://h3rn27vcgw7g" path="res://Assets/UI/l0_sprite_1.png" id="1_ervg3"]
+[ext_resource type="Shader" path="res://UI/moon_bar.gdshader" id="1_oyo32"]
 [ext_resource type="Texture2D" uid="uid://cxickoqnd7fue" path="res://Assets/UI/l1_sprite_1.png" id="2_gyiat"]
 [ext_resource type="Script" path="res://UI/sun_bar.gd" id="3_g0q6s"]
+[ext_resource type="Texture2D" uid="uid://4bqca6cktlpg" path="res://Assets/circle.png" id="5_8845k"]
+
+[sub_resource type="Gradient" id="Gradient_2oult"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.803922, 0.0235294, 0.235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x7dna"]
+gradient = SubResource("Gradient_2oult")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ea8k1"]
+shader = ExtResource("1_oyo32")
+shader_parameter/val = 0.0
+shader_parameter/gradient = SubResource("GradientTexture1D_x7dna")
+
+[sub_resource type="Gradient" id="Gradient_rtgb4"]
+colors = PackedColorArray(1, 0.830495, 0.408407, 1, 1, 0, 0, 0.160784)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n82s7"]
+gradient = SubResource("Gradient_rtgb4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8j4m"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(0, 10, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 36.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 25.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.01
+scale_max = 0.02
+color_initial_ramp = SubResource("GradientTexture1D_n82s7")
 
 [node name="SunBar" type="TextureProgressBar"]
+material = SubResource("ShaderMaterial_ea8k1")
 offset_left = 128.0
 offset_top = 32.0
 offset_right = 256.0
 offset_bottom = 64.0
 rotation = 3.14159
+value = 100.0
 fill_mode = 1
 texture_under = ExtResource("1_ervg3")
 texture_progress = ExtResource("2_gyiat")
 script = ExtResource("3_g0q6s")
+
+[node name="SunParticles" type="GPUParticles2D" parent="."]
+position = Vector2(128, 16.0003)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_e8j4m")
+texture = ExtResource("5_8845k")
+lifetime = 2.0
