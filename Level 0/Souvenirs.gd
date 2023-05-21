@@ -17,7 +17,7 @@ func on_spawn(type: Events.Type, _pos: Vector2):
 	
 	var obj = item.instantiate()
 	
-	var pos: Vector2 = Vector2(_pos.x + randf_range(-30.0, 30.0), _pos.y + randf_range(-150.0, 150.0))
+	var pos: Vector2 = Vector2(_pos.x + randf_range(-60.0, 60.0), _pos.y + randf_range(-160.0, 180.0))
 	obj.global_position = pos
 	
 	obj.type = type

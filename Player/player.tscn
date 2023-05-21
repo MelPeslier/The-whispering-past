@@ -147,14 +147,12 @@ modulate = Color(0.611765, 0.611765, 0.611765, 1)
 scale = Vector2(4, 4)
 collision_mask = 6
 script = ExtResource("1_0xk6x")
-slide_time = null
-jump_buffer_time_max = null
-slide_buffer_time_max = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_cepw3")
-animation = &"WALK"
+animation = &"RUN"
+frame_progress = 0.952151
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -174,16 +172,16 @@ attenuation = 13.9288
 
 [node name="RespireFaible" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4e8a0")
-volume_db = -10.0
+volume_db = -17.5
 pitch_scale = 0.8
 
 [node name="RespireNormale" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4e8a0")
-volume_db = -7.0
+volume_db = -15.5
 
 [node name="RespireForte" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_e68rq")
-volume_db = -5.0
+volume_db = -12.0
 
 [node name="Slide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_gojdl")

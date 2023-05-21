@@ -12,3 +12,5 @@ signal add_point(type: Type)
 signal add_to_bar(type: Type, val: float)
 
 signal add_diam(type: Type, val: float)
+
+signal cut_scene()

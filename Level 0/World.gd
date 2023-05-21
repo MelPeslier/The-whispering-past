@@ -4,8 +4,8 @@ extends Node2D
 @onready var sun_bar: PackedScene = preload("res://UI/sun_bar.tscn")
 
 var total: int = 0
-var pos: int = 15
-var neg: int = 17
+var pos: int = 5
+var neg: int = 7
 
 func _ready() -> void:
 	Events.connect("add_point", _on_add_point)

@@ -43,29 +43,36 @@ var respi: int = respiration.FAIBLE
 var respi_time: float = 0.0
 
 var running_time: float = 0.0
-var running_time_interval: float = 10
+var running_time_interval: float = 53
+
+var is_on_cut_scene: bool
+
+func _ready() -> void:
+	Events.connect("cut_scene", _on_cut_scene)
+	is_on_cut_scene = false
 
 func _physics_process(delta: float) -> void:
-	velocity.x = speed
-	if velocity.y >= MAX_FALL_SPEED:
-		velocity.y = MAX_FALL_SPEED
-	slide_buffer += delta
-	running_time += delta
-	respi_time += delta
+	if not is_on_cut_scene:
+		velocity.x = speed
+		if velocity.y >= MAX_FALL_SPEED:
+			velocity.y = MAX_FALL_SPEED
+		slide_buffer += delta
+		running_time += delta
+		respi_time += delta
 	
 	if not is_on_floor():
 		velocity.y += GRAVITY
 		jump_buffer += delta
-		if velocity.y < 0 and not Input.is_action_pressed("jump") :
+		if velocity.y < 0 and not Input.is_action_pressed("jump") and not is_on_cut_scene :
 			velocity.y = max(velocity.y, MIN_JUMP_FORCE)
 		
 		if velocity.y > 0:
 			animated_sprite_2d.play('FALL')
 			
-			if Input.is_action_just_pressed('jump'):
+			if Input.is_action_just_pressed('jump') and not is_on_cut_scene:
 				jump_buffer = 0.0
 			
-			if Input.is_action_just_pressed("slide"):
+			if Input.is_action_just_pressed("slide") and not is_on_cut_scene:
 				slide_buffer = 0.0
 		
 	else:
@@ -97,19 +104,25 @@ func _physics_process(delta: float) -> void:
 				else:
 					respi = respiration.NORMALE
 			
-			if velocity.x == 0:
+			if velocity.x == 0 || velocity.x < 25:
+				velocity.x = 0
 				animated_sprite_2d.play("IDLE")
-			elif velocity.x < 350:
-				animated_sprite_2d.play("WALK")
-				eaerae
-			else: 
-				animated_sprite_2d.play("RUN")
-				step += delta
+			else:
+				if velocity.x < 415:
+					if velocity.x < 200:
+						step += delta * 0.4
+					else:
+						step += delta * 0.6
+					animated_sprite_2d.play("WALK")
+				else:
+					animated_sprite_2d.play("RUN")
+					step += delta
+				
 				if step > STEP:
 					step = 0.0
 					pas.play()
 					spawn_particles(position , pas_particle)
-					
+						
 				if respi_time > respi_interval:
 					respi_time = 0.0
 					match respi:
@@ -123,29 +136,30 @@ func _physics_process(delta: float) -> void:
 							respi_interval = 1.23
 							respire_forte.play()
 		
-		if Input.is_action_just_pressed('jump') || jump_buffer < jump_buffer_time_max:
-			animated_sprite_2d.play("JUMP")
-			velocity.y = MAX_JUMP_FORCE
-			is_sliding = false
-			has_landed = false
-			atteri.volume_db = 2.5
-			atteri.play()
-			spawn_particles(position , pas_particle)
-			step = 0.0 
-			collision_shape_2d.position.y = -15
-			collision_shape_2d.scale.y = 1.0
-			area_detection_shape.position.y = -15
-			area_detection_shape.scale.y = 1.0
-		
-		elif Input.is_action_just_pressed("slide") || slide_buffer < slide_buffer_time_max:
-			animated_sprite_2d.play("SLIDE")
-			is_sliding = true
-			slide.play()
-			actual_slide_time = 0.0 
-			collision_shape_2d.position.y = -7.5
-			collision_shape_2d.scale.y = 0.5
-			area_detection_shape.position.y = -7.5
-			area_detection_shape.scale.y = 0.5
+		if not is_on_cut_scene:
+			if Input.is_action_just_pressed('jump') || jump_buffer < jump_buffer_time_max:
+				animated_sprite_2d.play("JUMP")
+				velocity.y = MAX_JUMP_FORCE
+				is_sliding = false
+				has_landed = false
+				atteri.volume_db = 2.5
+				atteri.play()
+				spawn_particles(position , pas_particle)
+				step = 0.0 
+				collision_shape_2d.position.y = -15
+				collision_shape_2d.scale.y = 1.0
+				area_detection_shape.position.y = -15
+				area_detection_shape.scale.y = 1.0
+			
+			elif Input.is_action_just_pressed("slide") || slide_buffer < slide_buffer_time_max:
+				animated_sprite_2d.play("SLIDE")
+				is_sliding = true
+				slide.play()
+				actual_slide_time = 0.0 
+				collision_shape_2d.position.y = -7.5
+				collision_shape_2d.scale.y = 0.5
+				area_detection_shape.position.y = -7.5
+				area_detection_shape.scale.y = 0.5
 	
 	move_and_slide()
 
@@ -153,3 +167,10 @@ func spawn_particles(pos: Vector2, scene: PackedScene):
 	var instance = scene.instantiate()
 	instance.global_position = pos
 	get_tree().get_current_scene().add_child(instance)
+
+func _on_cut_scene():
+	is_on_cut_scene = true
+	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "velocity:x", 0.0, 10.0)
+	
+	
