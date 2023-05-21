@@ -63,6 +63,7 @@ stream = ExtResource("3_q5kha")
 
 [node name="ParticlesDissoulution" parent="." instance=ExtResource("4_bgtj2")]
 process_material = SubResource("ParticleProcessMaterial_ynn0n")
+lifetime = 1.5
 
 [node name="Dissolution" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_2hqux")

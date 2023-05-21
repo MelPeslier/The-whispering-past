@@ -13,7 +13,7 @@ blend_mode = 1
 radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_ixatl"]
-colors = PackedColorArray(0.419608, 0.0313726, 0.792157, 1, 0.419608, 0.0313726, 0.792157, 1)
+colors = PackedColorArray(0.419608, 0.0313726, 0.792157, 1, 0.219608, 0, 0.207843, 0.235294)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bqdvk"]
 gradient = SubResource("Gradient_ixatl")
@@ -63,10 +63,8 @@ stream = ExtResource("3_p572g")
 volume_db = -3.5
 
 [node name="ParticlesDissoulution" parent="." instance=ExtResource("4_ofbng")]
-emitting = true
 process_material = SubResource("ParticleProcessMaterial_2ha11")
 lifetime = 1.5
-one_shot = false
 
 [node name="Dissolution" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_rbub6")

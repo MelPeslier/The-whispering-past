@@ -31,5 +31,7 @@ offset_bottom = 88.0
 
 [node name="Diamant" type="Sprite2D" parent="."]
 position = Vector2(128, 40)
-scale = Vector2(0.666665, 1.25)
+scale = Vector2(0.666665, 1)
 texture = ExtResource("3_u5vwf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]

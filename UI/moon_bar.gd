@@ -22,7 +22,13 @@ func update_style_moon(val: float):
 	
 	tween.tween_property(moon_particles, "process_material:emission_box_extents", Vector3(val * U, 10.0, 1.0), t)
 	tween.tween_property(moon_particles, "position", Vector2(128.0 - val * U, 16.0), t)
-	moon_particles.set("amount", clamp(val, 1, 100))
+	if val > 0:
+		if not moon_particles.emitting:
+			moon_particles.emitting = true
+		moon_particles.set("amount", val)
+	else:
+		moon_particles.emitting = false
+	
 #	set("material:shader_parameter/val", val)
 #	moon_particles.process_material.set("emission_box_extents", Vector3(val * U, 10.0, 1.0))
 #	moon_particles.set("position", Vector2(128.0 - val * U, 16.0))
