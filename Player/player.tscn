@@ -152,7 +152,7 @@ script = ExtResource("1_0xk6x")
 position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_cepw3")
 animation = &"RUN"
-frame_progress = 0.952151
+frame_progress = 0.30763
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

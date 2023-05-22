@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://brro7st15ydc0"]
+
+[sub_resource type="Shader" id="Shader_tbi35"]
+code = "shader_type canvas_item;
+
+
+uniform vec4 color : source_color;
+uniform sampler2D dissolve_texture;
+uniform float dissolve_value : hint_range(0.0, 1.0);
+
+void fragment(){
+    vec4 main_texture = texture(TEXTURE, UV);
+	main_texture = mix(main_texture, color, 1.0);
+    vec4 noise_texture = texture(dissolve_texture, UV);
+    main_texture.a *= floor(dissolve_value + min(1.0, noise_texture.x));
+    COLOR = main_texture;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oonld"]
+frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bvtu8"]
+seamless = true
+seamless_blend_skirt = 0.13
+noise = SubResource("FastNoiseLite_oonld")
+
+[resource]
+shader = SubResource("Shader_tbi35")
+shader_parameter/color = Color(0.0784314, 0, 0.0705882, 1)
+shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bvtu8")

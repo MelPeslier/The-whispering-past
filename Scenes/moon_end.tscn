@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1rjaftww1ofb"]
+
+[ext_resource type="AudioStream" uid="uid://i7fu53gy1yf8" path="res://Assets/Sons/moon_end.wav" id="1_g07rm"]
+
+[node name="MoonEnd" type="CanvasLayer"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0784314, 0, 0.0705882, 1)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.580392, 0, 0.780392, 1)
+offset_top = 160.0
+offset_right = 1152.0
+offset_bottom = 465.0
+theme_override_font_sizes/font_size = 50
+text = "it's never too late to be better
+
+ let the echoes from the past
+
+ rise you"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="maudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_g07rm")
+volume_db = -2.0

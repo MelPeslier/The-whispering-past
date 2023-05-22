@@ -14,3 +14,7 @@ signal add_to_bar(type: Type, val: float)
 signal add_diam(type: Type, val: float)
 
 signal cut_scene()
+
+signal start_game()
+
+signal end_cinematic(val: int)

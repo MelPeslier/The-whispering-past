@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4um0l4oc7e3y"]
+[gd_scene load_steps=35 format=3 uid="uid://b4um0l4oc7e3y"]
 
 [ext_resource type="Texture2D" uid="uid://m1opf4nl6sb3" path="res://Assets/Parallax Forest Background - Blue/04_Forest.png" id="1_pj1kw"]
 [ext_resource type="Texture2D" uid="uid://djjb215ed6ala" path="res://Assets/Parallax Forest Background - Blue/05_Particles.png" id="2_frwqo"]
@@ -23,10 +23,16 @@
 [ext_resource type="Script" path="res://Level 0/World.gd" id="15_swm6e"]
 [ext_resource type="Script" path="res://Level 0/CutScene.gd" id="16_ssc7l"]
 [ext_resource type="PackedScene" uid="uid://cfwrw8e4dppc6" path="res://UI/gui.tscn" id="22_wp0ih"]
-[ext_resource type="Texture2D" uid="uid://clgcq4fjjo4pb" path="res://icon.svg" id="24_gj20v"]
+[ext_resource type="AudioStream" uid="uid://bvk31mfvslmft" path="res://Assets/Sons/sun_pre_end.wav" id="24_p2vf0"]
+[ext_resource type="AudioStream" uid="uid://lpmhawokjwru" path="res://Assets/Sons/moon_pre_end.wav" id="25_6lmct"]
+[ext_resource type="AudioStream" uid="uid://qyogb1c3sld1" path="res://Assets/Sons/no_choice_pre_end.wav" id="25_qfcbp"]
+[ext_resource type="PackedScene" uid="uid://vcyb8y0ngw2j" path="res://Scenes/sun_end.tscn" id="25_trrus"]
+[ext_resource type="PackedScene" uid="uid://bkpfcems2kcqa" path="res://Scenes/intro.tscn" id="25_wk821"]
+[ext_resource type="PackedScene" uid="uid://dje51qixs77kw" path="res://Scenes/no_choose_end.tscn" id="26_6tkxj"]
+[ext_resource type="PackedScene" uid="uid://c1rjaftww1ofb" path="res://Scenes/moon_end.tscn" id="27_3n6yo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvpyk"]
-size = Vector2(102192, 72)
+size = Vector2(81896, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ymks"]
 size = Vector2(136, 648)
@@ -164,9 +170,9 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_soxxm")
 centered = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UICanvas" type="CanvasLayer" parent="."]
 
-[node name="GUI" parent="CanvasLayer" instance=ExtResource("22_wp0ih")]
+[node name="GUI" parent="UICanvas" instance=ExtResource("22_wp0ih")]
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("15_swm6e")
@@ -178,7 +184,7 @@ position = Vector2(0, 648)
 collision_layer = 2
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="World/Ground/ground"]
-position = Vector2(51064, -44)
+position = Vector2(40916, -44)
 shape = SubResource("RectangleShape2D_hvpyk")
 
 [node name="CutScene" type="Area2D" parent="World/Ground"]
@@ -188,6 +194,9 @@ script = ExtResource("16_ssc7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground/CutScene"]
 shape = SubResource("RectangleShape2D_5ymks")
+
+[node name="End_sound" type="Node2D" parent="World/Ground/CutScene"]
+position = Vector2(2432, 128)
 
 [node name="Marker2D" type="Marker2D" parent="World"]
 script = ExtResource("9_qanxd")
@@ -204,7 +213,7 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_kkj3h")
 
 [node name="Player" parent="World" instance=ExtResource("8_pums1")]
-position = Vector2(76472, 480)
+position = Vector2(584, 152)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
@@ -764,7 +773,7 @@ position = Vector2(66488, 380)
 position = Vector2(66928, 380)
 
 [node name="SpawnPoint195" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(67168, 380)
+position = Vector2(66712, 368)
 
 [node name="SpawnPoint152" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
 position = Vector2(66904, 380)
@@ -839,7 +848,7 @@ position = Vector2(72472, 380)
 position = Vector2(72320, 380)
 
 [node name="SpawnPoint220" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(72472, 380)
+position = Vector2(73120, 384)
 
 [node name="SpawnPoint221" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
 position = Vector2(72152, 380)
@@ -860,7 +869,7 @@ position = Vector2(75832, 380)
 position = Vector2(74960, 380)
 
 [node name="SpawnPoint226" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
-position = Vector2(77096, 380)
+position = Vector2(76608, 384)
 
 [node name="SpawnPoint225" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
 position = Vector2(73624, 380)
@@ -883,6 +892,57 @@ position = Vector2(70672, 380)
 [node name="SpawnPoint217" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
 position = Vector2(70912, 380)
 
+[node name="SpawnPoint229" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69600, 384)
+
+[node name="SpawnPoint230" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69448, 384)
+
+[node name="SpawnPoint231" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69600, 384)
+
+[node name="SpawnPoint232" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69448, 384)
+
+[node name="SpawnPoint233" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(71584, 380)
+
+[node name="SpawnPoint234" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(71432, 380)
+
+[node name="SpawnPoint235" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(71584, 380)
+
+[node name="SpawnPoint236" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(71264, 380)
+
+[node name="SpawnPoint237" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(72728, 384)
+
+[node name="SpawnPoint238" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(72576, 384)
+
+[node name="SpawnPoint239" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(72728, 384)
+
+[node name="SpawnPoint240" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(73912, 384)
+
+[node name="SpawnPoint241" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(72576, 384)
+
+[node name="SpawnPoint242" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69624, 384)
+
+[node name="SpawnPoint243" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69864, 384)
+
+[node name="SpawnPoint244" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69624, 384)
+
+[node name="SpawnPoint245" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
+position = Vector2(69864, 384)
+
 [node name="SpawnPoint158" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
 position = Vector2(62928, 380)
 
@@ -895,15 +955,28 @@ position = Vector2(64104, 380)
 [node name="SpawnPoint161" parent="World/Souvenirs" instance=ExtResource("14_oxcrv")]
 position = Vector2(65104, 380)
 
-[node name="Node2D" type="Node2D" parent="World"]
-position = Vector2(79552, 424)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
+stream = ExtResource("24_p2vf0")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="World"]
+stream = ExtResource("25_6lmct")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="World"]
+stream = ExtResource("25_qfcbp")
+volume_db = -10.0
+
+[node name="Intro" parent="." instance=ExtResource("25_wk821")]
+
+[node name="SunEnd" parent="." instance=ExtResource("25_trrus")]
+
+[node name="NoChooseEnd" parent="." instance=ExtResource("26_6tkxj")]
+
+[node name="MoonEnd" parent="." instance=ExtResource("27_3n6yo")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_12jei")
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(36448, 64)
-texture = ExtResource("24_gj20v")
 
 [connection signal="area_entered" from="World/Ground/CutScene" to="World/Ground/CutScene" method="_on_area_entered"]
 [connection signal="area_entered" from="World/Marker2D/AireActivation" to="World/Marker2D/AireActivation" method="_on_area_entered"]

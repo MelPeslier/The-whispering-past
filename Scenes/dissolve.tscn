@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://trpcypooiy0"]
+
+[ext_resource type="Material" uid="uid://brro7st15ydc0" path="res://Scenes/dissolve_material.tres" id="1_xru8s"]
+[ext_resource type="Texture2D" uid="uid://clgcq4fjjo4pb" path="res://icon.svg" id="2_5oi0t"]
+[ext_resource type="Script" path="res://Scenes/dissolve.gd" id="2_6ehcf"]
+
+[node name="dissolve" type="Sprite2D"]
+material = ExtResource("1_xru8s")
+texture = ExtResource("2_5oi0t")
+centered = false
+script = ExtResource("2_6ehcf")

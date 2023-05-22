@@ -45,11 +45,17 @@ var respi_time: float = 0.0
 var running_time: float = 0.0
 var running_time_interval: float = 53
 
-var is_on_cut_scene: bool
+var is_on_cut_scene: bool = true
 
 func _ready() -> void:
 	Events.connect("cut_scene", _on_cut_scene)
-	is_on_cut_scene = false
+	Events.connect("start_game", on_start_game)
+	is_on_cut_scene = true
+
+func on_start_game():
+	var t:Tween = create_tween()
+	t.tween_property(self, "velocity:x", speed, 3.0)
+	t.tween_property(self, "is_on_cut_scene", false, 0.0)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_cut_scene:
@@ -172,5 +178,4 @@ func _on_cut_scene():
 	is_on_cut_scene = true
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "velocity:x", 0.0, 10.0)
-	
 	

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dje51qixs77kw"]
+
+[ext_resource type="AudioStream" uid="uid://dg8lj7opjgkkg" path="res://Assets/Sons/no_choice_end.wav" id="1_e544h"]
+
+[node name="NoChooseEnd" type="CanvasLayer"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0784314, 0, 0.0705882, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_top = 160.0
+offset_right = 1152.0
+offset_bottom = 465.0
+theme_override_font_sizes/font_size = 50
+text = "yesterday is heavy
+
+put it down"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="maudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_e544h")

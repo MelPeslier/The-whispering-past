@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://vcyb8y0ngw2j"]
+
+[ext_resource type="AudioStream" uid="uid://dcywtaxwdj85f" path="res://Assets/Sons/sun_end.wav" id="1_snyqq"]
+
+[node name="SunEnd" type="CanvasLayer"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0784314, 0, 0.0705882, 1)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0.752941, 0.337255, 1)
+offset_top = 160.0
+offset_right = 1152.0
+offset_bottom = 465.0
+theme_override_font_sizes/font_size = 50
+text = "We fall, we break, we fail
+
+ but then
+
+we rise, we heal, we overcome"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="maudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_snyqq")
