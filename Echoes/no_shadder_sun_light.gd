@@ -16,7 +16,7 @@ func _ready() -> void:
 	var time_up = randf_range(0.75, 1.25)
 	var time_down = time_up * randf_range(1.25, 1.45)
 	
-	var tween: Tween = get_tree().create_tween().set_loops()
+	var tween: Tween = create_tween().set_loops(20)
 	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	tween.tween_property(self, "scale", Vector2(1.15, 1.15), time_up)
@@ -24,9 +24,7 @@ func _ready() -> void:
 
 	tween.tween_property(self, "scale", Vector2(0.85, 0.85), time_down)
 	tween.parallel().tween_property(self, "position:y", position.y + 1.0, time_down)
-	
-	if tween:
-		tween.kill()
+
 
 func _on_area_entered(_area: Area2D) -> void:
 	dissolution.play()
@@ -36,7 +34,7 @@ func _on_area_entered(_area: Area2D) -> void:
 	
 	particles_dissoulution.emitting = true
 	
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	
 	tween.tween_property(self, "scale", Vector2(1.30, 1.30), 0.22)
 	tween.parallel().tween_property(sun_sprite, "modulate:a", 0, 0.22)

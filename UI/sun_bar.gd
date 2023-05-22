@@ -23,7 +23,7 @@ func _on_add_to_bar(type: Events.Type, val: float) -> void:
 		else:
 			particles.emitting = false
 		
-		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).set_parallel()
+		var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).set_parallel()
 		tween.tween_property(self, "value", val as int, t)
 		tween.tween_property(self, "material:shader_parameter/val", val as float, t)
 		

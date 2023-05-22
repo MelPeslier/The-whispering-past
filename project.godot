@@ -13,7 +13,9 @@ config_version=5
 config/name="Game Jam 01"
 run/main_scene="res://Scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://icon.PNG"
+config/icon="res://iconpng.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 

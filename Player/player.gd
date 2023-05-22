@@ -176,6 +176,7 @@ func spawn_particles(pos: Vector2, scene: PackedScene):
 
 func _on_cut_scene():
 	is_on_cut_scene = true
-	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "velocity:x", 0.0, 10.0)
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "velocity", Vector2(0.0, 0.0),  10.0)
+	Events.emit_signal("free_them_all")
 	

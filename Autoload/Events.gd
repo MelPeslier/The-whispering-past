@@ -18,3 +18,5 @@ signal cut_scene()
 signal start_game()
 
 signal end_cinematic(val: int)
+
+signal free_them_all()

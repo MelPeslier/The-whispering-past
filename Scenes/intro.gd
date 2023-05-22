@@ -8,7 +8,7 @@ func _ready() -> void:
 	visible = true
 	await get_tree().create_timer(1).timeout
 	audio_stream_player.play()
-	var t: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	var t: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(sprite_2d, "material:shader_parameter/dissolve_value", 0.0, 3.0)
 	
 	await get_tree().create_timer(9.5).timeout

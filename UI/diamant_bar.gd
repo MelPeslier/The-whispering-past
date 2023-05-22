@@ -27,7 +27,7 @@ func _on_add_diam(type: Events.Type, val: int) -> void:
 	else:
 		particles.emitting = false
 	
-	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).set_parallel()
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).set_parallel()
 	tween.tween_property(self, "self_modulate", actual_color, t)
 	tween.tween_property(particles, "process_material:color", actual_color, t)
 	

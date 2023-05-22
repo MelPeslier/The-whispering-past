@@ -4,7 +4,7 @@ extends Node2D
 @onready var sun_bar: PackedScene = preload("res://UI/sun_bar.tscn")
 
 var total: int = 0
-var pos: int = 5
+var pos: int = 3
 var neg: int = 7
 
 func _ready() -> void:
@@ -42,6 +42,7 @@ func _on_add_point(type: Events.Type) -> void:
 
 
 func _on_cut_scene():
+	await get_tree().create_timer(3).timeout
 	var u: int
 	if total > 80:
 		u = 0
@@ -55,5 +56,5 @@ func _on_cut_scene():
 		u = 2
 		$AudioStreamPlayer3.play()
 	
-	await get_tree().create_timer(15).timeout 
+	await get_tree().create_timer(7).timeout 
 	Events.emit_signal("end_cinematic", u)
