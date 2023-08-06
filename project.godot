@@ -13,7 +13,7 @@ config_version=5
 config/name="Game Jam 01"
 run/main_scene="res://Scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-boot_splash/image="res://icon.PNG"
+boot_splash/image="res://iconpng.png"
 config/icon="res://iconpng.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -24,6 +24,14 @@ Events="*res://Autoload/Events.gd"
 [display]
 
 window/size/resizable=false
+
+[editor]
+
+run/main_run_args="--rendering-driver opengl3"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 
